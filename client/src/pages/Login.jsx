@@ -1,5 +1,4 @@
-// src/pages/Login.jsx
-import React, { useContext, useState, useEffect } from 'react'; // Added useEffect
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -13,19 +12,16 @@ const loginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  const { currentUser, login, loading: authLoading } = useContext(AuthContext); // Added currentUser, authLoading
+  const { currentUser, login, loading: authLoading } = useContext(AuthContext); 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  // Add this useEffect hook to check if user is already logged in
   useEffect(() => {
     if (!authLoading && currentUser) {
-      // If already logged in, redirect to appropriate dashboard
       navigate(currentUser.role === 'patient' ? '/dashboard' : '/dentist/dashboard');
     }
   }, [currentUser, authLoading, navigate]);
 
-  // Show loading while checking auth state
   if (authLoading) {
     return (
       <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -34,9 +30,8 @@ const Login = () => {
     );
   }
 
-  // If user is already logged in, don't render the login form
   if (currentUser) {
-    return null; // This prevents flash of login form before redirect
+    return null; 
   }
 
   const handleSubmit = async (values) => {

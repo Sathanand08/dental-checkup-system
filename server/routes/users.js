@@ -1,10 +1,8 @@
-// routes/users.js
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const { auth } = require('../middleware/auth');
 
-// Get user profile
 router.get('/me', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');

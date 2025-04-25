@@ -1,4 +1,3 @@
-// controllers/dentistController.js
 const User = require('../models/User');
 
 exports.getAllDentists = async (req, res) => {

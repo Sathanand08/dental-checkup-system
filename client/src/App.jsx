@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
@@ -16,7 +15,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 
-// Create a theme with breakpoints
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -39,13 +37,9 @@ const theme = createTheme({
   },
 });
 
-// Protected route component
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const { currentUser, loading } = useContext(AuthContext);
 
-  
-
-  // Show loading spinner while checking authentication
   if (loading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -54,7 +48,6 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
     );
   }
 
-  // After loading is complete, check authentication
   if (!currentUser) {
     return <Navigate to="/login" />;
   }
@@ -78,7 +71,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            {/* Patient Routes */}
             <Route
               path="/dashboard"
               element={
@@ -96,7 +88,6 @@ function App() {
               }
             />
 
-            {/* Dentist Routes */}
             <Route
               path="/dentist/dashboard"
               element={
@@ -114,7 +105,6 @@ function App() {
               }
             />
 
-            {/* 404 Route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Box>

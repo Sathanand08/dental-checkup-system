@@ -1,9 +1,7 @@
-// controllers/checkupController.js
 const Checkup = require('../models/Checkup');
 const multer = require('multer');
 const path = require('path');
 
-// Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -15,7 +13,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ 
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 }, 
   fileFilter: (req, file, cb) => {
     const filetypes = /jpeg|jpg|png/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -27,7 +25,7 @@ const upload = multer({
       cb(new Error('Only images are allowed'));
     }
   }
-}).array('images', 5); // Allow up to 5 images
+}).array('images', 5);
 
 exports.uploadMiddleware = (req, res, next) => {
   upload(req, res, (err) => {
@@ -100,7 +98,6 @@ exports.updateCheckup = async (req, res) => {
       return res.status(403).json({ message: 'Not authorized' });
     }
     
-    // Update images with descriptions
     if (req.files && req.files.length > 0) {
       const images = req.files.map((file, index) => ({
         path: file.path,

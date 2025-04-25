@@ -1,4 +1,3 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
 import * as jwt_decode from 'jwt-decode';
 import api from '../services/api';
@@ -100,7 +99,6 @@ export const AuthProvider = ({ children }) => {
     setCurrentUser(null);
   };
 
-  // Debug helper - log auth state changes
   useEffect(() => {
     console.log('Auth state updated:', { 
       isAuthenticated: !!currentUser,

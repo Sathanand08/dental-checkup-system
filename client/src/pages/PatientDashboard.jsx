@@ -1,4 +1,3 @@
-// src/pages/PatientDashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
@@ -57,8 +56,7 @@ const PatientDashboard = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           Patient Dashboard
         </Typography>
-        
-        {/* Checkups Section - Displayed at the Top */}
+       
         <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
           <Typography variant="h5" gutterBottom>
             Your Checkups
@@ -99,7 +97,6 @@ const PatientDashboard = () => {
           )}
         </Paper>
         
-        {/* Dentists Section - Displayed Below */}
         <Paper elevation={3} sx={{ p: 3 }}>
           <Typography variant="h5" gutterBottom>
             Available Dentists

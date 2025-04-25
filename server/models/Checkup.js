@@ -1,4 +1,3 @@
-// models/Checkup.js
 const mongoose = require('mongoose');
 
 const checkupSchema = new mongoose.Schema({

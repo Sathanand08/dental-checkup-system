@@ -1,5 +1,4 @@
-// src/pages/Register.jsx
-import React, { useContext, useState, useEffect } from 'react'; // Added useEffect
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -15,19 +14,16 @@ const registerSchema = Yup.object().shape({
 });
 
 const Register = () => {
-  const { currentUser, register, loading: authLoading } = useContext(AuthContext); // Added currentUser, authLoading
+  const { currentUser, register, loading: authLoading } = useContext(AuthContext); 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  // Add this useEffect hook to check if user is already logged in
   useEffect(() => {
     if (!authLoading && currentUser) {
-      // If already logged in, redirect to appropriate dashboard
       navigate(currentUser.role === 'patient' ? '/dashboard' : '/dentist/dashboard');
     }
   }, [currentUser, authLoading, navigate]);
 
-  // Show loading while checking auth state
   if (authLoading) {
     return (
       <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -36,9 +32,8 @@ const Register = () => {
     );
   }
 
-  // If user is already logged in, don't render the register form
   if (currentUser) {
-    return null; // This prevents flash of register form before redirect
+    return null;
   }
 
   const handleSubmit = async (values) => {
