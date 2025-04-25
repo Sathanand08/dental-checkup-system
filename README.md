@@ -27,7 +27,7 @@ Clone the repository
 
 BASH
 
-git clone https://github.com/yourusername/dental-checkup-system.git
+git clone https://github.com/Sathanand08/dental-checkup-system.git
 cd dental-checkup-system
 Install dependencies and setup server
 
