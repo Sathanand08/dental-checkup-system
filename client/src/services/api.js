@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000'
+  baseURL: 'http://localhost:5000' || 'https://dental-checkup-system-w5gt.onrender.com'
 });
 
 api.interceptors.request.use(
